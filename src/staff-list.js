@@ -597,8 +597,10 @@ registerPlugin(
                 }
             });
 
-            // set new description to channel
-            channel.setDescription(description);
+            // set new description to channel if the description was modified (to prevent server log spam)
+             if (channel.description() !== description) {
+                channel.setDescription(description);
+            }
         }
 
         // LOADING EVENT
